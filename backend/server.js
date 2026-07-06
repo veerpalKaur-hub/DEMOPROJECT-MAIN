@@ -3,7 +3,11 @@ import dotenv from "dotenv";
 
 import connectDB from "./config/db.js";
 import userSchema from "./models/Users.js";
+import feedbackschema from "./models/feedback.js";
 import mongoose from "mongoose";
+import feedback from "./models/feedback.js";
+import { addUser, getAllUsers,updateUser,deleteUser} from "./controllers/userController.js"
+import { addFeedback, deleteFeedback, getallfeedbacks ,updatefeedback} from "./controllers/feedbackcontroller.js"
 
 dotenv.config();
 
@@ -31,26 +35,13 @@ app.post("/test", (req, res) => {
 });
 
 
-app.post("/add-user", (req, res) => {
-  
-  const { name, email, password } = req.body;
-  userSchema.create({ name, email, password })
-    .then((user) => {
-      res.status(201).json({ message: "User added successfully", user });
-    })
-    .catch((error) => {
-      res.status(500).json({ message: "Error adding user", error });
-    });
+app.post("/adduser",addUser);
+app.get("/getAllUsers",getAllUsers);
 
-  // Here you would typically save the user to your database
-    });
-
-
-  
-
-
-
-
+app.post("/addfeedback",addFeedback);
+app.delete("/deletefeedback/:id",deleteFeedback);
+app.get("/getallfeedbacks",getallfeedbacks);
+app.put("/updatefeedback/:id",updatefeedback);
 
 const PORT = process.env.PORT;
 
