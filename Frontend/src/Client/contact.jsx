@@ -1,8 +1,26 @@
-import React from "react";
+import React ,{ useState}from "react";
 import { Link } from "react-router-dom";
 import { Mail, User , Phone, Tag, Pen,PhoneCall,Send } from "lucide-react";
+import { sendMail } from "../apiServices/ContactApi";
+
  
 function Contact(){
+   const [form, setForm] = useState({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    console.log("Form submitted");
+    e.preventDefault();
+
+   await sendMail(form);
+  };
     return (
         <>
             < div className="relative">
@@ -29,7 +47,7 @@ function Contact(){
                         <Mail className="text-amber-600 w-10 h-10 mr-5"/>Send Us a Message</h2>
                         <div className="bg-amber-600 h-1 w-20 ml-30 rounded-2xl mb-9"></div>
                         <div>
-                            <form action="/submit" method="post">
+                            <form onSubmit={handleSubmit} method="post">
                             <div className="flex flex-row  "> 
                                 <div className="flex flex-row items-center justify-center border-2 border-gray-400 w-50 h-10 mt-3"  > 
                                          <User className="text-gray-400 "/>
@@ -37,6 +55,8 @@ function Contact(){
                                          type="name"
                                          id="name"
                                          name="name"
+                                         value={form.name}
+                                         onChange={handleChange}
                                          placeholder="Your Name"
                                           className="w-full h-full outline-none px-2"
                                        />
@@ -48,6 +68,8 @@ function Contact(){
                                        type="email"
                                        id="email"
                                        name="email"
+                                       value={form.email}
+                                         onChange={handleChange}
                                        placeholder="Your Email"
                                         className="w-full h-full outline-none px-2"
                                      />
@@ -60,6 +82,8 @@ function Contact(){
                                          type="number"
                                          id="phone"
                                          name="phone"
+                                         value={form.phone}
+                                         onChange={handleChange}
                                          placeholder="Your phone number"
                                           className="w-full h-full outline-none px-2"
                                        />
@@ -71,6 +95,8 @@ function Contact(){
                                        type="text"
                                        id="subject"
                                        name="subject"
+                                       value={form.subject}
+                                         onChange={handleChange}
                                        placeholder="Subject"
                                         className="w-full h-full outline-none px-2"
                                      />
@@ -78,11 +104,18 @@ function Contact(){
                             </div>
                             <div className="flex flex-row border-2 border-gray-400  w-105 h-30  mt-3"  > 
                                        <Pen className="text-gray-400 "/>
-                                     <textarea name="message" id="message" placeholder="your message"
+                                     <textarea 
+                                     name="message"
+                                     id="message" 
+                                     value={form.message}
+                                         onChange={handleChange}
+                                     placeholder="your message"
                                       className="w-full h-full outline-none px-2"></textarea>
                                      </div>
-                                     <button className="bg-slate-950 text-white w-105 h-11 p-3 mt-3 rounded-xl flex flex-row">
-                                        <Send className="text-white ml-30"/>Send Message</button>
+            
+                                     <button type="submit"  onClick={handleSubmit} className="bg-slate-950 text-white w-105 h-11 p-3 mt-3 rounded-xl flex flex-row hover:bg-cyan-900">
+                                        <Send className="text-white ml-30 "/>Send Message</button>
+                                      
                                 </form>
                         </div>
 

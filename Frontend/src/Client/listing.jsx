@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Listitems } from "../Dummydata/properties";
-import PropertyDetail from "./PropertyDetail";
+import PropertyDetail from "../component/PropertyDetail";
 
 function Listing() {
     const navigate = useNavigate();
@@ -20,17 +20,13 @@ function Listing() {
                     {Listitems.map((item)=> (
                         <div key={item.id}  onClick={() => navigate(`/property/${item.id}`)} 
                         className="bg-slate-800/60 border border-slate-950 backdrop-blur-md rounded-lg shadow-md p-6 cursor-pointer">
-                    <img src={item.image} alt={item.title} className="w-80 h-50 object-cover mb-4" />
+                    <img src={item.image} alt={item.title} className="w-full h-50 object-cover mb-4" />
                     <h3 className="text-white text-xl font-sans font-bold mb-2">{item.title}</h3>
                     <p className="text-slate-400 mb-4">{item.description}</p>
                     <p className="text-slate-400 font-bold">{item.price}</p>
-                   
-          
-                     
-
-                    </div>
+                        </div>
                     ))}
-            </div>
+                </div>
             </div>
         </section>
         </>

@@ -101,10 +101,10 @@ function Footer(){
                   </h2>
                   {/*Location */}
                   <h2>
-                     <LocateFixed className="w-4 h-4 text-cyan-300" /> <a 
+                     <LocateFixed className="w-4 h-4 text-cyan-300 " /> <a 
                      href="https://www.google.com/maps/place/Bengaluru,+Karnataka/@12.9687709,77.4288531,10.7z/data=
                      !4m6!3m5!1s0x3bae1670c9b44e6d:0xf8dfc3e8517e4fe0!8m2!3d12.9628957!4d77.57754!16zL20vMDljMTc?entr
-                     y=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D" className="hover:text-white transition">
+                     y=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D" className="hover:text-cyan-300 transition">
                         Banglore</a>
                   </h2>
                 

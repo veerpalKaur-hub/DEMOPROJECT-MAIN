@@ -2,9 +2,9 @@ import feedback from "../models/feedback.js"
 import mongoose from "mongoose"
 
 export async function addFeedback(req,res){
- const {name,email,rating,comment} = req.body;
+ const {name,email,rating,subject,comment} = req.body;
   
- await feedback.create({name,email,rating,comment})
+ await feedback.create({name,email,subject,rating,comment})
 .then((feedback)=>{
         res.status(201).json({message:"feedback added successfully",feedback});
     })

@@ -35,6 +35,16 @@ function Navbar() {
                 Listing <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </Link>
            </li>
+           <li>
+              <Link to="/login" className=" text-slate-950 transition-colors duration-300 bg-cyan-500 p-2 rounded-2xl hover:text-white hover:bg-slate-800">
+                Login 
+              </Link>
+           </li>
+           {/* <li>
+              <Link to="/newproperty" className="relative group transition-colors duration-300 hover:text-cyan-300">
+                newproperty <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              </Link>
+           </li> */}
          </ul>
     </div>
     </nav>

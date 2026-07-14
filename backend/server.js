@@ -8,12 +8,22 @@ import mongoose from "mongoose";
 import feedback from "./models/feedback.js";
 import { addUser, getAllUsers,updateUser,deleteUser} from "./controllers/userController.js"
 import { addFeedback, deleteFeedback, getallfeedbacks ,updatefeedback} from "./controllers/feedbackcontroller.js"
+import { addProperty,getAllProperties, updateProperty, deleteProperty  } from "./controllers/propertycontroller.js";
+import cors from "cors";
+import { sendEmail } from "./controllers/Mailcontroller.js";
 
 dotenv.config();
 
 connectDB();
 
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 
 
 
@@ -43,6 +53,12 @@ app.delete("/deletefeedback/:id",deleteFeedback);
 app.get("/getallfeedbacks",getallfeedbacks);
 app.put("/updatefeedback/:id",updatefeedback);
 
+app.post("/addProperty",addProperty);
+app.delete("/deleteproperty/:id",deleteProperty);
+app.get("/getAllProperties", getAllProperties);
+app.put("/updateProperty/:id", updateProperty);
+
+app.post("/send-email", sendEmail);
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {

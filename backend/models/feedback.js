@@ -10,6 +10,10 @@ const feedbackSchema = new mongoose.Schema(
         type: String,
         required:true,
     },
+    subject: {
+      type: String,
+      
+    },
     "rating": {
         type: Number,
         required:true,
